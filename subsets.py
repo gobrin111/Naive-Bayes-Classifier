@@ -60,7 +60,7 @@ class Classifier:
         self.accuracy /= len(self.df_25)
         print("Accuracy: ", self.accuracy)
 
-
+# this is here to run the functions and input the file
 gnbc = Classifier()
-gnbc.train("Data.xlsx")
+gnbc.train("Data.xlsx") # just change the file name here to use other files for testing
 gnbc.runTest()
