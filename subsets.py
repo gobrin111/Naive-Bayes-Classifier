@@ -20,8 +20,7 @@ class Classifier:
         # df has original data
 
         # split data into the respective subsets for training and testing
-        self.df_25 = self.df.sample(frac=0.25, random_state=42) # so the split is same throughout iterations, so the accuracy is the same
-        # self.df_25 = self.df.sample(frac=0.25)
+        self.df_25 = self.df.sample(frac=0.25, random_state=42) # random state set to 42 so the 75 25 split is the same every time program runs
         self.df_75 = self.df.drop(self.df_25.index)
 
         # sort training data into two with the malignant and the benign
@@ -61,7 +60,19 @@ class Classifier:
         self.accuracy /= len(self.df_25)
         print("Accuracy: ", self.accuracy)
 
+
+
 # this is here to run the functions and input the file
 gnbc = Classifier()
 gnbc.train("Data.xlsx") # just change the file name here to use other files for testing
 gnbc.runTest()
+
+# run X example from project sheet
+# change X variable if needed for testing
+X = [13.0, 15.0, 85.0, 500.0, 0.1, 0.15, 0.1, 0.05, 0.2, 0.08, 0.5, 1.5, 4.0, 70.0, 0.01, 0.02,
+     0.02, 0.01, 0.015, 0.002, 14.0, 20.0, 90.0, 600.0, 0.2, 0.25, 0.2, 0.1, 0.3, 0.1]
+
+if gnbc.testRow(X):
+    print("Single test is benign")
+else:
+    print("Single test is malignant")
