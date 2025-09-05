@@ -21,6 +21,7 @@ class Classifier:
 
         # split data into the respective subsets for training and testing
         self.df_25 = self.df.sample(frac=0.25, random_state=42) # so the split is same throughout iterations, so the accuracy is the same
+        # self.df_25 = self.df.sample(frac=0.25)
         self.df_75 = self.df.drop(self.df_25.index)
 
         # sort training data into two with the malignant and the benign
